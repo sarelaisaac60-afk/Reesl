@@ -1,20 +1,318 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SoundPulse - Music Publishing & Streaming</title>
-    <meta name="description" content="Publish music, create tracklists, like, comment, share, download tracks, and follow artists with Google authentication and public profiles." />
-    <meta property="og:title" content="SoundPulse - Music Publishing & Streaming" />
-    <meta property="og:description" content="Publish music, create tracklists, like, comment, share, download tracks, and follow artists with Google authentication and public profiles." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-rose-500 selection:text-white">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAX WEB</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #02070b;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* FONDO NEÓN */
+.luz {
+  position: fixed;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: .65;
+  z-index: -2;
+  animation: mover 7s infinite alternate;
+}
+
+.verde {
+  background: #00ff66;
+  top: -100px;
+  left: -100px;
+}
+
+.azul {
+  background: #008cff;
+  bottom: -100px;
+  right: -100px;
+  animation-delay: 2s;
+}
+
+@keyframes mover {
+  from { transform: translate(0,0); }
+  to { transform: translate(100px,80px); }
+}
+
+/* PARTÍCULAS */
+#particulas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* CABECERA */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8%;
+  background: #06121ccc;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #00ff6650;
+}
+
+.logo {
+  font-size: 27px;
+  color: #00ff88;
+  text-shadow: 0 0 15px #00ff88;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: .3s;
+}
+
+nav a:hover {
+  color: #00eaff;
+  text-shadow: 0 0 15px #00eaff;
+}
+
+/* PRESENTACIÓN */
+.inicio {
+  min-height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 25px;
+}
+
+.inicio h1 {
+  font-size: clamp(45px, 9vw, 85px);
+  background: linear-gradient(90deg,#00ff88,#00cfff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 15px #00dca0);
+  animation: brillo 2s infinite alternate;
+}
+
+@keyframes brillo {
+  from { filter: drop-shadow(0 0 5px #00ff88); }
+  to { filter: drop-shadow(0 0 25px #00cfff); }
+}
+
+.inicio p {
+  font-size: 18px;
+  color: #c4d9df;
+  margin: 25px 0;
+}
+
+/* BOTONES */
+.boton {
+  display: inline-block;
+  padding: 15px 35px;
+  border-radius: 30px;
+  border: 2px solid #00ff88;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 0 15px #00ff88;
+  transition: .4s;
+}
+
+.boton:hover {
+  background: #00ff88;
+  color: #00120a;
+  box-shadow: 0 0 35px #00ff88;
+  transform: scale(1.08);
+}
+
+/* TARJETAS */
+.servicios {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.servicios h2 {
+  font-size: 35px;
+  color: #00dfff;
+  margin-bottom: 40px;
+  text-shadow: 0 0 15px #008cff;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.tarjeta {
+  width: 270px;
+  padding: 35px 20px;
+  background: #ffffff0c;
+  border: 1px solid #00dfff80;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 20px #008cff25;
+  transition: .4s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-12px);
+  border-color: #00ff88;
+  box-shadow: 0 0 30px #00ff88;
+}
+
+.tarjeta h3 {
+  color: #00ff88;
+  margin-bottom: 15px;
+}
+
+.tarjeta p {
+  color: #c4d9df;
+  line-height: 1.5;
+}
+
+/* PIE DE PAGINA */
+footer {
+  padding: 30px;
+  text-align: center;
+  color: #00dfff;
+  border-top: 1px solid #00dfff40;
+}
+
+/* CELULARES */
+@media(max-width:600px) {
+  header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav a {
+    margin: 0 8px;
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="luz verde"></div>
+<div class="luz azul"></div>
+<canvas id="particulas"></canvas>
+
+<header>
+  <h2 class="logo">MAX WEB</h2>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section class="inicio" id="inicio">
+  <h1>MAX WEB</h1>
+  <p>BIENVENIDO A MI MUNDO DIGITAL</p>
+  <a href="#servicios" class="boton">EXPLORAR AHORA</a>
+</section>
+
+<section class="servicios" id="servicios">
+  <h2>MI MUNDO</h2>
+
+  <div class="contenedor">
+
+    <div class="tarjeta">
+      <h3>💚 Diseño</h3>
+      <p>Diseños modernos y elegantes con luces verdes.</p>
+    </div>
+
+    <div class="tarjeta">
+      <h3>💙 Tecnología</h3>
+      <p>Un mundo digital con efectos azules y neón.</p>
+    </div>
+
+    <div class="tarjeta">
+      <h3>⚡ Animaciones</h3>
+      <p>Partículas, movimientos y efectos especiales.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer id="contacto">
+  <p>© 2026 MAX WEB</p>
+  <p>Diseñado con 💚 y 💙</p>
+</footer>
+
+<script>
+// SISTEMA DE PARTÍCULAS
+const canvas = document.getElementById("particulas");
+const ctx = canvas.getContext("2d");
+
+let particulas = [];
+
+function ajustarCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", ajustarCanvas);
+ajustarCanvas();
+
+for(let i = 0; i < 70; i++) {
+  particulas.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radio: Math.random() * 2 + 1,
+    velocidad: Math.random() * 0.8 + 0.2,
+    color: Math.random() > 0.5 ? "#00ff88" : "#00cfff"
+  });
+}
+
+function animar() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particulas.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.radio,0,Math.PI*2);
+    ctx.fillStyle = p.color;
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = p.color;
+    ctx.fill();
+
+    p.y -= p.velocidad;
+
+    if(p.y < 0) {
+      p.y = canvas.height;
+      p.x = Math.random() * canvas.width;
+    }
+  });
+
+  requestAnimationFrame(animar);
+}
+
+animar();
+</script>
+
+</body>
 </html>
