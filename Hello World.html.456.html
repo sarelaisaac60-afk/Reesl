@@ -1,0 +1,287 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlist - IVAN PRODUCER</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #090d16;
+      color: #f8fafc;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Imagen de fondo en calidad completa cargada directamente */
+    .bg-wallpaper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center center;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* Filtro ligero para mantener los textos legibles sin tapar el logo */
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(9, 13, 22, 0.35);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    header {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 14px 16px;
+      background-color: rgba(15, 23, 42, 0.70);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 16px;
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      box-shadow: 0 4px 20px rgba(0, 132, 255, 0.25);
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #38bdf8;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    header p {
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      margin-top: 4px;
+    }
+
+    .video-list {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .video-card {
+      background-color: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      background-color: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-info {
+      padding: 14px 16px;
+    }
+
+    .video-title {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: #f8fafc;
+    }
+
+    .video-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      background: linear-gradient(90deg, #0284c7, #2563eb);
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo de pantalla directo -->
+  <img 
+    class="bg-wallpaper" 
+    src="https://i.ibb.co/TMXy4f0D/file-0000000046ec820ea66003bb5b9fbf30.png" 
+    alt="Fondo IVAN PRODUCER"
+  >
+  <div class="bg-overlay"></div>
+
+  <header>
+    <h1>IVAN PRODUCER</h1>
+    <p>Lista de reproducción móvil • 13 Tracks</p>
+  </header>
+
+  <main class="video-list">
+    
+    <!-- Video 1 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="Alan Walker Style - Rise Again" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Alan Walker Style - Rise Again (by IVAN PRODUCER)</h2>
+        <span class="video-tag">Track #1</span>
+      </div>
+    </article>
+
+    <!-- Video 2 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="Nena Sana - El Miyano ft Bilisiano Remix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Nena Sana - El Miyano ft Bilisiano [Remix IVAN PRODUCER]</h2>
+        <span class="video-tag">Track #2</span>
+      </div>
+    </article>
+
+    <!-- Video 3 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="Te Quiero Para Mi - Don Omar & Zion Lennox" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Te Quiero Para Mi - Don Omar & Zion Lennox (DJ IVAN PRODUCER)</h2>
+        <span class="video-tag">Track #3</span>
+      </div>
+    </article>
+
+    <!-- Video 4 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="Slow Dimension - IVAN PRODUCER" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Slow Dimension +++ [By IVAN PRODUCER]</h2>
+        <span class="video-tag">Track #4</span>
+      </div>
+    </article>
+
+    <!-- Video 5 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="Slow Style Brutality - DJ IVAN PROD. LMM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Slow Style Brutality - By DJ IVAN PROD. LMM</h2>
+        <span class="video-tag">Track #5</span>
+      </div>
+    </article>
+
+    <!-- Video 6 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="Style Walker - DJ IVAN PRODUCER LMM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Style Walker - DJ IVAN PRODUCER LMM - LENTO VIOLENTO</h2>
+        <span class="video-tag">Track #6</span>
+      </div>
+    </article>
+
+    <!-- Video 7 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="Bar - Tini ft L-Gante REMIX" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Bar - (Tini ft L-Gante REMIX) BY IVAN PRODUCER</h2>
+        <span class="video-tag">Track #7</span>
+      </div>
+    </article>
+
+    <!-- Video 8 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="Headlights Norwell Remix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Headlights Norwell Remix - DJ IVAN PRODUCER</h2>
+        <span class="video-tag">Track #8</span>
+      </div>
+    </article>
+
+    <!-- Video 9 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="Guaracha Del Cielo L-Gante Rmx Pt2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Guaracha Del Cielo - L-Gante Rmx Pt2 - DJ IVAN PRODUCER LMM</h2>
+        <span class="video-tag">Track #9</span>
+      </div>
+    </article>
+
+    <!-- Video 10 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="Wisin Yandel Zion & Lennox Deseo Remix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Wisin Yandel, Zion & Lennox - Deseo Remix (IVAN PRODUCER)</h2>
+        <span class="video-tag">Track #10</span>
+      </div>
+    </article>
+
+    <!-- Video 11 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="R.I.O. Like I Love You Remix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">R.I.O. - Like I Love You (IVAN PRODUCER)</h2>
+        <span class="video-tag">Track #11</span>
+      </div>
+    </article>
+
+    <!-- Video 12 -->
+    <article class="video-card">
+      <div class="video-wrapper">
+        <iframe loading="lazy" src="https://youtube.com" title="FuLiorD KimLove Remix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">FuLiorD - KimLove (IVAN PRODUCER)</h2>
+        <span class="video-tag">Track #12</span>
+      </div>
+    </article>
+
+    <!-- Video 13 -->
+    <article class="video-card">
+      <div class="video-wrapper">
