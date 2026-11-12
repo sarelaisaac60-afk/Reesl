@@ -1,0 +1,621 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/>```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist - IVAN PRODUCER &amp; MAXI ISAAC</title>
+    <!-- Tailwind CSS para diseño responsivo mobile-first -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter y Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome para íconos musicales y táctiles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        display: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        neon: {
+                            blue: '#00f0ff',
+                            sky: '#38bdf8',
+                            electric: '#0284c7',
+                            dark: '#090d16',
+                        }
+                    },
+                    boxShadow: {
+                        'neon': '0 4px 20px rgba(0, 132, 255, 0.28)',
+                        'card': '0 6px 18px rgba(0, 0, 0, 0.55)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#090d16] text-slate-50 font-sans antialiased selection:bg-sky-400 selection:text-slate-950 overflow-hidden min-h-screen flex flex-col items-center px-4 py-4 relative">
+
+    <!-- Pantalla de Carga Inicial (Preloader 0% a 100% en 3.2 segundos) -->
+    <div id="preloader" class="fixed inset-0 z-50 bg-[#05080f] flex flex-col items-center justify-center px-6 transition-opacity duration-500 ease-out">
+        <!-- Brillo ambiental detrás del preloader -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[460px] h-[320px] sm:h-[460px] bg-neon-blue/15 rounded-full blur-[110px] animate-pulse"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-sm text-center space-y-6">
+            <!-- Etiqueta superior -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-neon-blue/10 border border-neon-blue/30 text-neon-blue text-[11px] font-display tracking-[0.2em] uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-neon-blue animate-ping"></span>
+                INICIALIZANDO PLAYLIST
+            </div>
+
+            <!-- Nombres destacados con brillo neón -->
+            <div class="space-y-1.5">
+                <h2 class="font-display text-2xl sm:text-3xl font-black tracking-wider text-white drop-shadow-[0_0_15px_rgba(0,240,255,0.65)]">
+                    IVAN <span class="text-neon-blue">PRODUCER</span>
+                </h2>
+                <p class="font-display text-sm sm:text-base font-bold tracking-[0.25em] text-neon-blue/90">
+                    &amp;
+                </p>
+                <h2 class="font-display text-2xl sm:text-3xl font-black tracking-wider text-white drop-shadow-[0_0_15px_rgba(0,240,255,0.65)]">
+                    MAXI <span class="text-neon-blue">ISAAC</span>
+                </h2>
+            </div>
+
+            <!-- Contador grande 0% a 100% y barra de progreso -->
+            <div class="space-y-3 pt-2">
+                <div class="flex items-baseline justify-center">
+                    <span id="loaderPercent" class="font-display text-5xl sm:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-neon-blue to-sky-400 drop-shadow-[0_0_20px_rgba(0,240,255,0.5)]">
+                        0%
+                    </span>
+                </div>
+
+                <!-- Contenedor de la barra -->
+                <div class="w-full h-2.5 bg-slate-900/90 rounded-full overflow-hidden border border-slate-800 p-0.5 shadow-inner">
+                    <div id="loaderBar" class="h-full w-0 rounded-full bg-gradient-to-r from-sky-500 via-neon-blue to-cyan-200 shadow-[0_0_15px_#00f0ff] transition-all duration-75 ease-out"></div>
+                </div>
+
+                <p class="text-[11px] font-mono tracking-widest text-slate-400 uppercase">
+                    CARGANDO 13 TRACKS OFICIALES...
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fondo de pantalla personalizado con fallback seguro -->
+    <img 
+        class="fixed inset-0 w-screen h-screen object-cover object-center -z-20 pointer-events-none" 
+        src="https://i.ibb.co/TMXy4f0D/file-0000000046ec820ea66003bb5b9fbf30.png" 
+        onerror="this.src='https://placehold.co/1080x1920/090d16/38bdf8?text=IVAN+PRODUCER'"
+        alt="Fondo IVAN PRODUCER"
+    >
+    <!-- Filtro ligero para mantener los textos legibles sin tapar el logo -->
+    <div class="fixed inset-0 w-screen h-screen bg-[#090d16]/40 -z-10 pointer-events-none"></div>
+
+    <!-- Encabezado estilo Glassmorphism -->
+    <header class="w-full max-w-[480px] text-center mb-5 px-4 py-4 bg-slate-900/75 backdrop-blur-md rounded-2xl border border-sky-400/45 shadow-neon space-y-1.5">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-400/30 text-[10px] font-display tracking-widest text-sky-300 uppercase">
+            <i class="fa-solid fa-headphones"></i> Oficial Mobile Player
+        </div>
+        <h1 class="font-display text-xl sm:text-2xl font-extrabold text-sky-400 tracking-wide uppercase drop-shadow-[0_0_10px_rgba(56,189,248,0.4)]">
+            IVAN PRODUCER
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-200 font-medium">
+            &amp; <span class="text-sky-300 font-semibold">MAXI ISAAC</span> • Lista de reproducción móvil • 13 Tracks
+        </p>
+    </header>
+
+    <!-- Contenedor Principal de Videos -->
+    <main class="w-full max-w-[480px] flex flex-col gap-5 pb-10">
+
+        <!-- Track #1 (Conectado) -->
+        <article class="bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="relative w-full aspect-video bg-black">
+                <iframe 
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full border-0"
+                    src="https://www.youtube.com/embed/ThsE_fqlyGM?rel=0" 
+                    title="Alan Walker Style - Rise Again (by IVAN PRODUCER)" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-3.5 sm:p-4 flex items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                    <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                        Alan Walker Style - Rise Again (by IVAN PRODUCER)
+                    </h2>
+                    <span class="inline-block text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                        Track #1
+                    </span>
+                </div>
+                <a href="https://youtu.be/ThsE_fqlyGM" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube"
+                   class="p-2.5 rounded-xl bg-slate-800/90 hover:bg-red-600/90 text-slate-200 hover:text-white border border-slate-700/80 transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube text-base"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Track #2 (Conectado) -->
+        <article class="bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="relative w-full aspect-video bg-black">
+                <iframe 
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full border-0"
+                    src="https://www.youtube.com/embed/OaJ0vXzdWF4?rel=0" 
+                    title="Nena Sana - El Miyano ft Bilisiano [Remix IVAN PRODUCER]" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-3.5 sm:p-4 flex items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                    <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                        Nena Sana - El Miyano ft Bilisiano [Remix IVAN PRODUCER]
+                    </h2>
+                    <span class="inline-block text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                        Track #2
+                    </span>
+                </div>
+                <a href="https://youtu.be/OaJ0vXzdWF4" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube"
+                   class="p-2.5 rounded-xl bg-slate-800/90 hover:bg-red-600/90 text-slate-200 hover:text-white border border-slate-700/80 transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube text-base"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Track #3 (Conectado) -->
+        <article class="bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="relative w-full aspect-video bg-black">
+                <iframe 
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full border-0"
+                    src="https://www.youtube.com/embed/miYrbtKmnFw?rel=0" 
+                    title="Te Quiero Para Mi - Don Omar & Zion Lennox (DJ IVAN PRODUCER)" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-3.5 sm:p-4 flex items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                    <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                        Te Quiero Para Mi - Don Omar &amp; Zion Lennox (DJ IVAN PRODUCER)
+                    </h2>
+                    <span class="inline-block text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                        Track #3
+                    </span>
+                </div>
+                <a href="https://youtu.be/miYrbtKmnFw" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube"
+                   class="p-2.5 rounded-xl bg-slate-800/90 hover:bg-red-600/90 text-slate-200 hover:text-white border border-slate-700/80 transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube text-base"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Track #4 (Tarjeta interactiva con buscador directo + vinculación instantánea) -->
+        <article class="custom-track-card bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="player-slot relative w-full aspect-video bg-slate-950/90 flex flex-col items-center justify-center p-4 text-center border-b border-slate-800/80">
+                <div class="w-11 h-11 rounded-full bg-sky-500/15 border border-sky-400/40 flex items-center justify-center text-sky-400 mb-2">
+                    <i class="fa-brands fa-youtube text-xl"></i>
+                </div>
+                <p class="text-xs text-slate-300 max-w-xs mb-3">
+                    Este track está en YouTube. Ábrelo directo o pega su enlace abajo para reproducirlo aquí:
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-2 w-full">
+                    <a href="https://www.youtube.com/results?search_query=Slow+Dimension+IVAN+PRODUCER" target="_blank" rel="noopener noreferrer"
+                       class="px-3.5 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold inline-flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-magnifying-glass"></i> Buscar en YouTube
+                    </a>
+                </div>
+                <div class="mt-2.5 flex items-center gap-1.5 w-full max-w-xs">
+                    <input type="url" placeholder="Pega link de YouTube aquí..."
+                           class="yt-url-input flex-1 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400">
+                    <button type="button"
+                            class="load-yt-btn px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition-colors">
+                        Cargar
+                    </button>
+                </div>
+            </div>
+            <div class="p-3.5 sm:p-4">
+                <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                    Slow Dimension +++ [By IVAN PRODUCER]
+                </h2>
+                <span class="inline-block mt-1.5 text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                    Track #4
+                </span>
+            </div>
+        </article>
+
+        <!-- Track #5 (Conectado) -->
+        <article class="bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="relative w-full aspect-video bg-black">
+                <iframe 
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full border-0"
+                    src="https://www.youtube.com/embed/C3dxgJHwFv4?rel=0" 
+                    title="Slow Style Brutality - By DJ IVAN PROD. LMM" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-3.5 sm:p-4 flex items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                    <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                        Slow Style Brutality - By DJ IVAN PROD. LMM
+                    </h2>
+                    <span class="inline-block text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                        Track #5
+                    </span>
+                </div>
+                <a href="https://youtu.be/C3dxgJHwFv4" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube"
+                   class="p-2.5 rounded-xl bg-slate-800/90 hover:bg-red-600/90 text-slate-200 hover:text-white border border-slate-700/80 transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube text-base"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Track #6 (Conectado) -->
+        <article class="bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="relative w-full aspect-video bg-black">
+                <iframe 
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full border-0"
+                    src="https://www.youtube.com/embed/zQkqjiOe5Xs?rel=0" 
+                    title="Style Walker - DJ IVAN PRODUCER LMM - LENTO VIOLENTO" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-3.5 sm:p-4 flex items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                    <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                        Style Walker - DJ IVAN PRODUCER LMM - LENTO VIOLENTO
+                    </h2>
+                    <span class="inline-block text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                        Track #6
+                    </span>
+                </div>
+                <a href="https://youtu.be/zQkqjiOe5Xs" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube"
+                   class="p-2.5 rounded-xl bg-slate-800/90 hover:bg-red-600/90 text-slate-200 hover:text-white border border-slate-700/80 transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube text-base"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Track #7 (Conectado) -->
+        <article class="bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="relative w-full aspect-video bg-black">
+                <iframe 
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full border-0"
+                    src="https://www.youtube.com/embed/s0zeS4jorBY?rel=0" 
+                    title="Bar - (Tini ft L-Gante REMIX) BY IVAN PRODUCER" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-3.5 sm:p-4 flex items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                    <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                        Bar - (Tini ft L-Gante REMIX) BY IVAN PRODUCER
+                    </h2>
+                    <span class="inline-block text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                        Track #7
+                    </span>
+                </div>
+                <a href="https://youtu.be/s0zeS4jorBY" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube"
+                   class="p-2.5 rounded-xl bg-slate-800/90 hover:bg-red-600/90 text-slate-200 hover:text-white border border-slate-700/80 transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube text-base"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Track #8 (Conectado) -->
+        <article class="bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="relative w-full aspect-video bg-black">
+                <iframe 
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full border-0"
+                    src="https://www.youtube.com/embed/j-Bgegj1_Ac?rel=0" 
+                    title="Headlights Norwell Remix - DJ IVAN PRODUCER" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-3.5 sm:p-4 flex items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                    <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                        Headlights Norwell Remix - DJ IVAN PRODUCER
+                    </h2>
+                    <span class="inline-block text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                        Track #8
+                    </span>
+                </div>
+                <a href="https://youtu.be/j-Bgegj1_Ac" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube"
+                   class="p-2.5 rounded-xl bg-slate-800/90 hover:bg-red-600/90 text-slate-200 hover:text-white border border-slate-700/80 transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube text-base"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Track #9 (Conectado) -->
+        <article class="bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="relative w-full aspect-video bg-black">
+                <iframe 
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full border-0"
+                    src="https://www.youtube.com/embed/Jd_pD2ATu7w?rel=0" 
+                    title="Guaracha Del Cielo - L-Gante Rmx Pt2 - DJ IVAN PRODUCER LMM" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-3.5 sm:p-4 flex items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                    <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                        Guaracha Del Cielo - L-Gante Rmx Pt2 - DJ IVAN PRODUCER LMM
+                    </h2>
+                    <span class="inline-block text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                        Track #9
+                    </span>
+                </div>
+                <a href="https://youtu.be/Jd_pD2ATu7w" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube"
+                   class="p-2.5 rounded-xl bg-slate-800/90 hover:bg-red-600/90 text-slate-200 hover:text-white border border-slate-700/80 transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube text-base"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Track #10 (Conectado) -->
+        <article class="bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="relative w-full aspect-video bg-black">
+                <iframe 
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full border-0"
+                    src="https://www.youtube.com/embed/0DiwAHKsJ74?rel=0" 
+                    title="Wisin Yandel, Zion & Lennox - Deseo Remix (IVAN PRODUCER)" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-3.5 sm:p-4 flex items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                    <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                        Wisin Yandel, Zion &amp; Lennox - Deseo Remix (IVAN PRODUCER)
+                    </h2>
+                    <span class="inline-block text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                        Track #10
+                    </span>
+                </div>
+                <a href="https://youtu.be/0DiwAHKsJ74" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube"
+                   class="p-2.5 rounded-xl bg-slate-800/90 hover:bg-red-600/90 text-slate-200 hover:text-white border border-slate-700/80 transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube text-base"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Track #11 (Tarjeta interactiva con buscador directo + vinculación instantánea) -->
+        <article class="custom-track-card bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="player-slot relative w-full aspect-video bg-slate-950/90 flex flex-col items-center justify-center p-4 text-center border-b border-slate-800/80">
+                <div class="w-11 h-11 rounded-full bg-sky-500/15 border border-sky-400/40 flex items-center justify-center text-sky-400 mb-2">
+                    <i class="fa-brands fa-youtube text-xl"></i>
+                </div>
+                <p class="text-xs text-slate-300 max-w-xs mb-3">
+                    Este track está en YouTube. Ábrelo directo o pega su enlace abajo para reproducirlo aquí:
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-2 w-full">
+                    <a href="https://www.youtube.com/results?search_query=R.I.O.+Like+I+Love+You+IVAN+PRODUCER" target="_blank" rel="noopener noreferrer"
+                       class="px-3.5 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold inline-flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-magnifying-glass"></i> Buscar en YouTube
+                    </a>
+                </div>
+                <div class="mt-2.5 flex items-center gap-1.5 w-full max-w-xs">
+                    <input type="url" placeholder="Pega link de YouTube aquí..."
+                           class="yt-url-input flex-1 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400">
+                    <button type="button"
+                            class="load-yt-btn px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition-colors">
+                        Cargar
+                    </button>
+                </div>
+            </div>
+            <div class="p-3.5 sm:p-4">
+                <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                    R.I.O. - Like I Love You (IVAN PRODUCER)
+                </h2>
+                <span class="inline-block mt-1.5 text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                    Track #11
+                </span>
+            </div>
+        </article>
+
+        <!-- Track #12 (Tarjeta interactiva con buscador directo + vinculación instantánea) -->
+        <article class="custom-track-card bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="player-slot relative w-full aspect-video bg-slate-950/90 flex flex-col items-center justify-center p-4 text-center border-b border-slate-800/80">
+                <div class="w-11 h-11 rounded-full bg-sky-500/15 border border-sky-400/40 flex items-center justify-center text-sky-400 mb-2">
+                    <i class="fa-brands fa-youtube text-xl"></i>
+                </div>
+                <p class="text-xs text-slate-300 max-w-xs mb-3">
+                    Este track está en YouTube. Ábrelo directo o pega su enlace abajo para reproducirlo aquí:
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-2 w-full">
+                    <a href="https://www.youtube.com/results?search_query=FuLiorD+KimLove+IVAN+PRODUCER" target="_blank" rel="noopener noreferrer"
+                       class="px-3.5 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold inline-flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-magnifying-glass"></i> Buscar en YouTube
+                    </a>
+                </div>
+                <div class="mt-2.5 flex items-center gap-1.5 w-full max-w-xs">
+                    <input type="url" placeholder="Pega link de YouTube aquí..."
+                           class="yt-url-input flex-1 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400">
+                    <button type="button"
+                            class="load-yt-btn px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition-colors">
+                        Cargar
+                    </button>
+                </div>
+            </div>
+            <div class="p-3.5 sm:p-4">
+                <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                    FuLiorD - KimLove (IVAN PRODUCER)
+                </h2>
+                <span class="inline-block mt-1.5 text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                    Track #12
+                </span>
+            </div>
+        </article>
+
+        <!-- Track #13 (Conectado - Dance Style del canal oficial) -->
+        <article class="bg-slate-900/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-card border border-sky-400/35">
+            <div class="relative w-full aspect-video bg-black">
+                <iframe 
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full border-0"
+                    src="https://www.youtube.com/embed/PPN1hNVjZc0?rel=0" 
+                    title="Dance - Style [ Para Bailar / By DJ IVAN PRODUCER ]" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-3.5 sm:p-4 flex items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                    <h2 class="text-sm sm:text-base font-semibold leading-snug text-slate-50">
+                        Dance - Style [ Para Bailar / By DJ IVAN PRODUCER ]
+                    </h2>
+                    <span class="inline-block text-xs bg-gradient-to-r from-sky-600 to-blue-600 text-white px-2.5 py-0.5 rounded-full font-semibold">
+                        Track #13
+                    </span>
+                </div>
+                <a href="https://youtu.be/PPN1hNVjZc0" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube"
+                   class="p-2.5 rounded-xl bg-slate-800/90 hover:bg-red-600/90 text-slate-200 hover:text-white border border-slate-700/80 transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube text-base"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Botón de Compartir Playlist en Celulares -->
+        <section class="bg-slate-900/85 backdrop-blur-md border border-sky-400/40 rounded-2xl p-5 text-center space-y-3 shadow-neon">
+            <p class="text-xs text-slate-300">
+                Comparte esta lista oficial de <span class="text-sky-400 font-semibold">IVAN PRODUCER &amp; MAXI ISAAC</span>
+            </p>
+            <button id="sharePlaylistBtn" type="button"
+                    class="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-display font-bold text-xs sm:text-sm tracking-wider uppercase shadow-neon active:scale-95 transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-share-nodes text-base"></i> Compartir Playlist
+            </button>
+        </section>
+
+    </main>
+
+    <!-- Toast de notificación (reemplaza alert()) -->
+    <div id="toastMsg" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full bg-slate-900/95 border border-sky-400/50 text-sky-300 text-xs font-semibold shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">
+        ¡Enlace copiado al portapapeles!
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Preloader animado 0% a 100% (3.2 segundos)
+            const preloader = document.getElementById('preloader');
+            const loaderPercent = document.getElementById('loaderPercent');
+            const loaderBar = document.getElementById('loaderBar');
+            const duration = 3200;
+            let startTime = null;
+
+            function animateLoader(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easedProgress = 1 - Math.pow(1 - progress, 1.45);
+                const currentPercent = Math.round(easedProgress * 100);
+
+                loaderPercent.textContent = `${currentPercent}%`;
+                loaderBar.style.width = `${currentPercent}%`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(animateLoader);
+                } else {
+                    setTimeout(() => {
+                        preloader.classList.add('opacity-0', 'pointer-events-none');
+                        document.body.classList.remove('overflow-hidden');
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }, 250);
+                }
+            }
+            requestAnimationFrame(animateLoader);
+
+            // 2. Función helper para notificaciones toast
+            const toastMsg = document.getElementById('toastMsg');
+            function showToast(text) {
+                toastMsg.textContent = text;
+                toastMsg.classList.remove('opacity-0');
+                setTimeout(() => {
+                    toastMsg.classList.add('opacity-0');
+                }, 2600);
+            }
+
+            // 3. Extraer ID de YouTube y cargar reproductor al instante en los tracks 4, 11 y 12
+            function extractYouTubeId(url) {
+                const regExp = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+                const match = url.match(regExp);
+                return match ? match[1] : null;
+            }
+
+            document.querySelectorAll('.custom-track-card').forEach(card => {
+                const input = card.querySelector('.yt-url-input');
+                const btn = card.querySelector('.load-yt-btn');
+                const slot = card.querySelector('.player-slot');
+
+                btn.addEventListener('click', () => {
+                    const videoId = extractYouTubeId(input.value.trim());
+                    if (!videoId) {
+                        showToast('Pega un enlace válido de YouTube');
+                        return;
+                    }
+                    slot.className = 'relative w-full aspect-video bg-black';
+                    slot.innerHTML = `
+                        <iframe 
+                            class="absolute inset-0 w-full h-full border-0"
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+                            title="Reproductor YouTube IVAN PRODUCER" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    `;
+                    showToast('¡Video conectado al reproductor!');
+                });
+            });
+
+            // 4. Botón nativo para compartir playlist en celulares
+            const shareBtn = document.getElementById('sharePlaylistBtn');
+            shareBtn.addEventListener('click', async () => {
+                const shareData = {
+                    title: 'Playlist Oficial - IVAN PRODUCER & MAXI ISAAC',
+                    text: 'Escucha los 13 tracks oficiales de IVAN PRODUCER & MAXI ISAAC',
+                    url: window.location.href
+                };
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share(shareData);
+                    } catch (err) {
+                        // Usuario canceló compartir
+                    }
+                } else {
+                    const tempInput = document.createElement('input');
+                    tempInput.value = window.location.href;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                    showToast('¡Enlace de la playlist copiado!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```https://snappai.co/s/32dba0135cc3eccfac9e6cb0d25431f8
